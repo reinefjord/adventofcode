@@ -1,7 +1,6 @@
 import std/[algorithm, math, os, strutils, sugar]
 
 let lst = stdin.readAll().strip()
-
 let elves = lst.split("\n\n")
 
 var totals = collect:
@@ -14,6 +13,6 @@ var totals = collect:
 totals.sort(order = Descending)
 
 if paramStr(1) == "1":
-  echo(totals[0])
+  echo totals[0]
 elif paramStr(1) == "2":
-  echo(sum(totals[0..2]))
+  echo sum(totals[0..2])
