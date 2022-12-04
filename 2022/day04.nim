@@ -13,10 +13,7 @@ proc intersects(a, b: set[uint8]): bool =
   a * b != {}
 
 let compare =
-  case paramStr(1):
-  of "1":
-    eitherContains
-  of "2":
+  if paramCount() > 0 and paramStr(1) == "2":
     intersects
   else:
     eitherContains
