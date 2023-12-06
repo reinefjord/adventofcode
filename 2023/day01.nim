@@ -1,5 +1,4 @@
 import std/[math, sequtils, strutils]
-import d01_1
 
 func calcDigitLookup(): seq[(string, string)] =
   let digits = {
@@ -21,9 +20,25 @@ func calcDigitLookup(): seq[(string, string)] =
 
 const digits = calcDigitLookup()
 
-when isMainModule:
+proc calibrationValue(line: string): int =
+  var digits: seq[char]
+  for ch in line:
+    if ch.isDigit():
+      digits.add(ch)
+  result = parseInt(digits[0] & digits[^1])
+
+proc p1(input: string) =
+  let lines = input.strip().splitLines()
+  echo lines.map(calibrationValue).sum()
+
+proc p2(input: string) =
   let
-    input = stdin.readAll().strip()
+    input = input.strip()
     realInput = input.multiReplace(digits)
     lines = realInput.splitLines()
   echo lines.map(calibrationValue).sum()
+
+when isMainModule:
+  let input = stdin.readAll()
+  p1(input)
+  p2(input)
