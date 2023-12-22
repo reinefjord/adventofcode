@@ -19,8 +19,6 @@ func points(winning: seq[int]): int =
     0
 
 proc count(winning, cards: seq[int]): int =
-  # [4, 2, 2, 1,  0, 0]
-  # [1, 2, 4, 8, 14, 1]
   result = 1
   for _ in 1..winning[0]:
     result += cards.count(winning[1..winning[0]])
